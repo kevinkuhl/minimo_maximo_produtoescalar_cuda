@@ -1,3 +1,11 @@
+/* Grupo 03
+Carlos Neves
+Felipe de Oliveira
+Ivan Costa Sousa
+Jonathan Mello
+Kevin Kühl
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<cuda_runtime.h>
