@@ -30,14 +30,12 @@ __global__ void encontraMaior(int *vetor,int *maior, int tam)
 
 // Kernel para encontrar a soma dos produtos escalares dado um vetor
 __global__ void produtoEscalar(int *vetor1, int *vetor2, int *produto, int tam)
-{       printf("Teste");
-        // Calcula a posicao inicial analisada
+{       // Calcula a posicao inicial analisada
         int idx = threadIdx.x + blockIdx.x*blockDim.x;
         // Enquanto a posicao for menor do que o limite do vetor
         if (idx < tam)
         {
-            produto += vetor1[idx] * vetor2[idx];
-            printf("PRODUTO ATUAL: %d\n", *produto);
+            atomicAdd(produto, vetor1[idx]*vetor2[idx]);
         }
 }
 
