@@ -18,7 +18,7 @@ Exemplo de arquivo de matrizes:
 
 3 2 1
 
-Onde a ** primeira linha representa a dimensao das matrizes **.
+Onde a **primeira linha representa a dimensao das matrizes**.
 
 Para executar o programa, primeiro
 
