@@ -24,7 +24,7 @@ __global__ void encontraMaior(int *vetor,int *maior, int tam)
         if (idx < tam)
         {
                 // Calcula o elemento minimo, comparando com o valor em menor
-                atomicMax(menor,vetor[idx]);
+                atomicMax(maior,vetor[idx]);
         }
 }
 
@@ -94,8 +94,8 @@ int main(int argc,char **argv)
         fscanf(file,"%d",&dimensao);
 
         // Aloca espaco no host para as matrizes e para os resultados
-        cudaMallocHost((void**)&mA_h,dimensao*simensao*(sizeof(int)));
-        cudaMallocHost((void**)&mB_h,dimensao*simensao*(sizeof(int)));
+        cudaMallocHost((void**)&mA_h,dimensao*dimensao*(sizeof(int)));
+        cudaMallocHost((void**)&mB_h,dimensao*dimensao*(sizeof(int)));
         cudaMallocHost((void**)&menorA_h,sizeof(int));
         cudaMallocHost((void**)&menorB_h,sizeof(int));
         cudaMallocHost((void**)&maiorA_h,sizeof(int));
@@ -107,16 +107,16 @@ int main(int argc,char **argv)
                 for(j=0;j<dimensao;j++)
                         fscanf(file,"%d", &mA_h[i*dimensao+j]);
 
-        for(i=0;i<dimB[0];i++)
-                for(j=0;j<dimB[1];j++)
+        for(i=0;i<dimensao;i++)
+                for(j=0;j<dimensao;j++)
                         fscanf(file,"%d", &mB_h[i*dimensao+j]);
         
         // Fecha o arquivo
         fclose(file);
 
         // Aloca espaco no device para as matrizes e para os resultados
-        cudaMalloc((void**)&mA_d,(dimA[0])*dimA[1]*(sizeof(int)));
-        cudaMalloc((void**)&mB_d,(dimB[0])*dimB[1]* (sizeof(int)));
+        cudaMalloc((void**)&mA_d,dimensao*dimensao*(sizeof(int)));
+        cudaMalloc((void**)&mB_d,dimensao*dimensao*(sizeof(int)));
         cudaMalloc((void**)&menorA_d,sizeof(int));
         cudaMalloc((void**)&menorB_d,sizeof(int));
         cudaMalloc((void**)&maiorA_d,sizeof(int));
