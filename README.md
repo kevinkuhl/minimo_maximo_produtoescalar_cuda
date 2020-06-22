@@ -18,9 +18,9 @@ Exemplo de arquivo de matrizes:
 
 3 2 1
 
-Onde a **primeira linha representa a dimensao das matrizes**.
+Onde a **primeira linha representa a dimensão das matrizes**.
 
-Para executar o programa, primeiro
+Para executar o programa, primeiro compile
 
 $ nvcc -o desafio desafio.cu 
 
