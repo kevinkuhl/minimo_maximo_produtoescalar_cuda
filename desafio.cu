@@ -35,6 +35,7 @@ __global__ void produtoEscalar(int *vetor1, int *vetor2, int *produto, int tam)
         // Enquanto a posicao for menor do que o limite do vetor
         if (idx < tam)
         {
+            // Adiciona a soma do produto das posicoes atuais
             atomicAdd(produto, vetor1[idx]*vetor2[idx]);
         }
 }
@@ -181,9 +182,6 @@ int main(int argc,char **argv)
             printf("%d\n", *maiorB_h);
         else
             printf("%d\n", *maiorA_h);
-        
-
-
 
         // Libera o espaco alocado para as variaveis no host
         cudaFreeHost(menorA_h);
